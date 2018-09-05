@@ -40,7 +40,7 @@ class Sidebar extends Component {
         </div>
         <Locations
           museums = {this.props.museums}
-          showMarker = {this.props.showMarker}
+          showPlace = {this.props.showPlace}
         />
       </div>
     )

@@ -158,11 +158,15 @@ class App extends Component {
 
       // Add click event listeners to each marker to open info window
       window.google.maps.event.addListener(marker, 'click', () => {
-        for (let marker of this.state.markers) {
-          marker.setIcon(offImage)
-        }
-        marker.setIcon(onImage)
-        this.createInfoWindow(marker, infoWindow)
+        marker.setAnimation(window.google.maps.Animation.BOUNCE)
+        window.setTimeout(() => {
+          marker.setAnimation(null)
+          for (let index of markers) {
+            index.setIcon(offImage)
+          }
+          marker.setIcon(onImage)
+          this.createInfoWindow(marker, infoWindow)
+        }, 700)
       })
     })
   }
@@ -239,11 +243,15 @@ class App extends Component {
 
       // Add click event listeners to each marker to open info window
       window.google.maps.event.addListener(marker, 'click', () => {
-        for (let marker of this.state.markers) {
-          marker.setIcon(offImage)
-        }
-        marker.setIcon(onImage)
-        this.createInfoWindow(marker, infoWindow)
+        marker.setAnimation(window.google.maps.Animation.BOUNCE)
+        window.setTimeout(() => {
+          marker.setAnimation(null)
+          for (let index of allMarkers) {
+            index.setIcon(offImage)
+          }
+          marker.setIcon(onImage)
+          this.createInfoWindow(marker, infoWindow)
+        }, 700)
       })
     })
 
@@ -333,8 +341,10 @@ class App extends Component {
       `)
     })
 
-    // Open the info window for the selected marker
-    infoWindow.open(map, marker)
+    .then(() => {
+      // Open the info window for the selected marker
+      infoWindow.open(map, marker)
+    })
 
     // When clicking on the close button, close the window
     window.google.maps.event.addListener(infoWindow, 'closeclick', () => {
@@ -344,16 +354,24 @@ class App extends Component {
   }
 
   // When a list item is selected, bounce the corresponding marker
-  showMarker = (place) => {
+  showPlace = (place) => {
     let museumLatLng = place.geometry.location
     let markers = this.state.markers
+    let selectedMarker
+    let infoWindow = this.state.infoWindow
 
     for (let marker of markers) {
       if (marker.getPosition() === museumLatLng) {
+        selectedMarker = marker
         marker.setAnimation(window.google.maps.Animation.BOUNCE)
         window.setTimeout(() => {
           marker.setAnimation(null)
-        }, 1400)
+          for (let marker of markers) {
+            marker.setIcon(offImage)
+          }
+          marker.setIcon(onImage)
+          this.createInfoWindow(selectedMarker, infoWindow)
+        }, 700)
       }
     }
   }
@@ -372,7 +390,7 @@ class App extends Component {
           museums = {this.state.filteredMuseums}
           filterList = {this.filterList}
           ratingsFilter = {this.state.ratingsFilter}
-          showMarker = {this.showMarker}
+          showPlace = {this.showPlace}
         />
       </div>
     );

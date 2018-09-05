@@ -3,8 +3,8 @@ import '../App.css';
 import '../Responsive.css';
 
 class ListComponent extends Component {
-  showMarker = (place) => {
-    this.props.showMarker(place)
+  showPlace = (place) => {
+    this.props.showPlace(place)
   }
 
   // Render each museum list component
@@ -16,11 +16,11 @@ class ListComponent extends Component {
       {Array.isArray(places) && (places.map((place, index) =>
         <div
           key={index}
-          tabindex="0"
-          aria-role="button"
+          tabIndex="0"
+          role="button"
           className="component"
-          onKeyPress={this.showMarker.bind(this, place)}
-          onClick={this.showMarker.bind(this, place)}
+          onKeyPress={this.showPlace.bind(this, place)}
+          onClick={this.showPlace.bind(this, place)}
         >
           <div className="title-container">
             <span className="name">{place.name}</span>

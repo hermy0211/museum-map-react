@@ -10,7 +10,7 @@ class Locations extends Component {
       <div className="list">
         <ListComponent
           museums = {this.props.museums}
-          showMarker = {this.props.showMarker}
+          showPlace = {this.props.showPlace}
         />
       </div>
     )
