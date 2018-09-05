@@ -30,12 +30,21 @@ Basic functionality is built, including the following:
 
 ## Run
 
+### Running in Development Mode
+
 1. Open the terminal.
 2. Clone the repository: `git clone https://github.com/hermy0211/museum-map-react.git`
 3. Open the directory to which you have cloned the repository.
 4. Install all project dependencies with `npm install`
 5. Run `npm start` to start the development server
 6. Open the following webpage : `http://localhost:3000`
+
+### Running in Production Mode
+
+1. Open the terminal.
+2. Build the production ready optimized code. `npm run build`
+3. Deploy it to `gh-pages` branch by running `npm run deploy`.
+4. Check the online demo [here](https://hermy0211.github.io/museum-map-react/).
 
 
 ## Structure
