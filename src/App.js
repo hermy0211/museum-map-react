@@ -403,6 +403,9 @@ function loadMapJS(src) {
   const script = window.document.createElement("script")
   script.src = src
   script.async = true
+  script.onerror = (() => {
+    document.write("Failed to load google maps.")
+  })
   ref.parentNode.insertBefore(script, ref)
 }
 
