@@ -374,6 +374,10 @@ class App extends Component {
         }, 700)
       }
     }
+
+    if (window.innerWidth <= 600) {
+      window.scrollTo(0,0)
+    }
   }
 
   // Render the view
