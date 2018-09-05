@@ -66,6 +66,11 @@ Basic functionality is built, including the following:
 
 ## APIs
 
+Powered by FourSquare and Google Maps API
+
+![Google Logo](./googlemaps.png)
+![FourSquare Logo](./foursquare.png)
+
 This project uses the Google Maps APIs and the FourSquare APIs.
 For details on each, visit the following pages:
 
